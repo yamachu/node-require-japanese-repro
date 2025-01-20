@@ -23,7 +23,7 @@ jobs:
         - name: Change locale if needed
           if: ${{ matrix.locale != 'default' }}
           run: |
-            $locale = ${{ matrix.locale }}
+            $locale = "${{ matrix.locale }}"
             Install-Language $locale -CopyToSettings
             Set-WinUILanguageOverride -Language $locale
             Set-WinSystemLocale -SystemLocale $locale
