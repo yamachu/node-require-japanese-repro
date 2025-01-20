@@ -23,16 +23,16 @@ jobs:
         - name: Change locale if needed
           if: ${{ matrix.locale != 'default' }}
           run: |
-            $locale = "${{ matrix.locale }}"
+            $locale = ${{ matrix.locale }}
+            Install-Language $locale -CopyToSettings
             Set-WinUILanguageOverride -Language $locale
-            Set-WinSystemLocale $locale
-            Set-WinUserLanguageList $locale -Force
+            Set-WinSystemLocale -SystemLocale $locale
+            Set-WinUserLanguageList -LanguageList $locale -Force
             Set-Culture $locale
         - name: Show CodePage
           run: chcp
         - name: Show Locale
           run: |
-            Get-Culture
             # Get-WinUILanguageOverride
             Get-WinSystemLocale
             # Get-WinUserLanguageList
