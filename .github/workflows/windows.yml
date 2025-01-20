@@ -30,7 +30,7 @@ jobs:
             Set-WinUILanguageOverride -Language $locale
             Set-WinSystemLocale -SystemLocale $locale
             $langList = New-WinUserLanguageList -Language "ja-JP"
-            Set-WinUserLanguageList -LanguageList $langList -Force
+            Set-WinUserLanguageList $langList -Force
             Set-Culture $locale
         - name: Show CodePage
           run: chcp
