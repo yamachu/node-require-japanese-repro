@@ -29,8 +29,7 @@ jobs:
             Add-WindowsCapability -Online -Name "Language.Basic~~~$locale~0.0.1.0"
             Set-WinUILanguageOverride -Language $locale
             Set-WinSystemLocale -SystemLocale $locale
-            $langList = New-WinUserLanguageList -Language "ja-JP"
-            Set-WinUserLanguageList $langList -Force
+            Set-WinUserLanguageList ja-JP -Force
             Set-Culture $locale
         - name: Show CodePage
           run: chcp
