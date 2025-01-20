@@ -33,7 +33,7 @@ jobs:
         - name: Show Locale
           run: |
             Get-Culture
-            Get-WinUILanguageOverride
+            # Get-WinUILanguageOverride
             Get-WinSystemLocale
             Get-WinUserLanguageList
             Get-Culture
