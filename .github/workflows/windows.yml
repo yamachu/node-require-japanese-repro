@@ -24,7 +24,7 @@ jobs:
           if: ${{ matrix.locale != 'default' }}
           run: |
             $locale = "${{ matrix.locale }}"
-            Install-Language $locale -CopyToSettings
+            Install-Language -Language $locale
             Set-WinUILanguageOverride -Language $locale
             Set-WinSystemLocale -SystemLocale $locale
             Set-WinUserLanguageList -LanguageList $locale -Force
