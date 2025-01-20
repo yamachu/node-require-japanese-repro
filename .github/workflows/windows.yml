@@ -27,7 +27,8 @@ jobs:
             Add-WindowsCapability -Online -Name "Language.Basic~~~$locale~0.0.1.0"
             Set-WinUILanguageOverride -Language $locale
             Set-WinSystemLocale -SystemLocale $locale
-            Set-WinUserLanguageList -LanguageList $locale -Force
+            $langList = New-WinUserLanguageList $locale
+            Set-WinUserLanguageList $langList -Force
             Set-Culture $locale
         - name: Show CodePage
           run: chcp
