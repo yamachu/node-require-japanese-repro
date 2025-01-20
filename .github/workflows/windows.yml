@@ -35,6 +35,6 @@ jobs:
             Get-Culture
             # Get-WinUILanguageOverride
             Get-WinSystemLocale
-            Get-WinUserLanguageList
+            # Get-WinUserLanguageList
             Get-Culture
         - run: node main.js
