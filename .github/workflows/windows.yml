@@ -26,17 +26,5 @@ jobs:
             # https://github.com/PowerShell/PowerShellModuleCoverage/issues/18
             Import-Module -Name International -UseWindowsPowerShell -Verbose
             $locale = "${{ matrix.locale }}"
-            # Add-WindowsCapability -Online -Name "Language.Basic~~~$locale~0.0.1.0"
-            # Set-WinUILanguageOverride -Language $locale
             Set-WinSystemLocale -SystemLocale $locale
-            # Set-WinUserLanguageList ja-JP -Force
-            # Set-Culture $locale
-        - name: Show CodePage
-          run: chcp
-        - name: Show Locale
-          run: |
-            # Get-WinUILanguageOverride
-            Get-WinSystemLocale
-            # Get-WinUserLanguageList
-            Get-Culture
         - run: node main.js
