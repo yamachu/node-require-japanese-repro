@@ -1,0 +1,30 @@
+name: Windows Test
+on: 
+    - push
+    - workflow_dispatch
+
+jobs:
+    test:
+        runs-on: windows-latest
+        strategy:
+            matrix:
+                locale:
+                    - default
+                    - ja-JP
+        defaults:
+            run:
+                shell: pwsh
+        steps:
+        - uses: actions/checkout@v4
+        - uses: actions/setup-node@v4
+          with:
+            node-version: 22.13.0
+        - run: npm ci
+        - name: Change locale if needed
+          if: ${{ matrix.locale != 'default' }}
+          run: |
+            # https://github.com/PowerShell/PowerShellModuleCoverage/issues/18
+            # Import-Module -Name International -UseWindowsPowerShell -Verbose
+            $locale = "${{ matrix.locale }}"
+            Set-WinSystemLocale -SystemLocale $locale
+        - run: node main.js
