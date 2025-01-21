@@ -24,7 +24,7 @@ jobs:
           if: ${{ matrix.locale != 'default' }}
           run: |
             # https://github.com/PowerShell/PowerShellModuleCoverage/issues/18
-            Import-Module -Name International -UseWindowsPowerShell -Verbose
+            # Import-Module -Name International -UseWindowsPowerShell -Verbose
             $locale = "${{ matrix.locale }}"
             Set-WinSystemLocale -SystemLocale $locale
         - run: node main.js
