@@ -6,7 +6,9 @@ on:
 jobs:
     test:
         runs-on: windows-latest
+
         strategy:
+            fail-fast: false
             matrix:
                 locale:
                     - default
